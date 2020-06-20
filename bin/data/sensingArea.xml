@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config>
+	<flip horizontal="1" vertical="0" />
+	<threshold bang="0.05" brightness="30" />
+	<scenes>
+		<scene index="0">
+			<sensingArea number="0" type="0">
+				<rect x="313" y="185" width="83" height="132" />
+			</sensingArea>
+		</scene>
+		<scene index="1">
+			<sensingArea number="0" type="0">
+				<rect x="326.024" y="172" width="109.929" height="92" />
+			</sensingArea>
+		</scene>
+		<scene index="2">
+			<sensingArea number="1" type="0">
+				<rect x="316.988" y="204" width="115.953" height="129" />
+			</sensingArea>
+			<sensingArea number="2" type="0">
+				<rect x="354.635" y="142" width="146.071" height="109" />
+			</sensingArea>
+		</scene>
+		<scene index="3">
+			<sensingArea number="3" type="0">
+				<rect x="246.212" y="100" width="159.624" height="216" />
+			</sensingArea>
+			<sensingArea number="4" type="0">
+				<rect x="259.012" y="167" width="250.729" height="220" />
+			</sensingArea>
+			<sensingArea number="0" type="0">
+				<rect x="154.353" y="165" width="78.3059" height="114" />
+			</sensingArea>
+			<sensingArea number="1" type="0">
+				<rect x="132.518" y="283" width="124.988" height="75" />
+			</sensingArea>
+			<sensingArea number="2" type="0">
+				<rect x="146.824" y="231" width="204.047" height="190" />
+			</sensingArea>
+		</scene>
+		<scene index="4" />
+		<scene index="5" />
+		<scene index="6" />
+		<scene index="7" />
+		<scene index="8" />
+		<scene index="9" />
+		<scene index="10" />
+		<scene index="11" />
+		<scene index="12" />
+	</scenes>
+</config>

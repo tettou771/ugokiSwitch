@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+	<camera>
+		<searchName string="Logitech HD Pro Webcam C920" />
+		<settings fps="30" width="640" height="480" />
+	</camera>
+	<osc address="localhost" port="6000" />
+</config>
