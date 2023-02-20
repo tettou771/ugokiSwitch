@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "ofxOsc.h"
+#include "ofxFisheye.h"
 #include "UIButton/UIButton.h"
 #include "ImageSensing/SensingAreaManager.h"
 

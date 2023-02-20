@@ -1,2 +1,3 @@
+ofxFisheye
 ofxGui
 ofxOsc

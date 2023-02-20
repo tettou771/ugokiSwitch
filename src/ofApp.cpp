@@ -14,7 +14,7 @@ void ofApp::setup() {
 #endif
 
 	// フォントをロード
-	font.load("fonts/RictyDiminished-Regular.ttf", 12);
+    font.load(OF_TTF_SANS, 12);
 
 	sensingAreaManager.setup();
 
@@ -45,7 +45,7 @@ void ofApp::setup() {
 	gui.setPosition(0, 5);
 	gui.add(frameRate.setup("Frame rate", 30, 1, 60));
 	gui.add(videoShow.setup("Video show", true));
-    gui.add(fisheye.setup("Fisheye", 0, 0, 1.0));
+    gui.add(fisheye.setup("Fisheye", 0, -1., 1.));
 
 	sensingAreaManager.addParametorToGui(gui);
 	isGuiShowing = true;
@@ -92,11 +92,18 @@ void ofApp::onBeginCameraSelection() {
 }
 
 void ofApp::onBeginSensing() {
+    // もしサイズ指定がなければ、一旦1280x720にする
+    if (videoWidth * videoHeight == 0) {
+        videoWidth = 1280;
+        videoHeight = 720;
+    }
+    
 	// この状態で保存したとき、同じカメラで起動するようにデバイス名を代入しておく
 	cameraSearchName = cameraName[cameraIndex];
 
 	// windowサイズを変更
 	ofSetWindowShape(videoWidth, videoHeight);
+    ofxFisheye::setSize(videoWidth, videoHeight);
 
 	// vidGrabberを初期化
 	videoGrabber.setDeviceID(cameraIndex);
@@ -183,7 +190,12 @@ void ofApp::draw_sensing() {
 	if (videoShow) {
 		ofPushStyle();
 		ofSetColor(255);
+        
+        ofxFisheye::setScale(1 + 2 * abs(fisheye));
+        ofxFisheye::setFisheyeFactor(fisheye);
+        ofxFisheye::begin();
 		viewScreen.draw(0, 0);
+        ofxFisheye::end();
 		ofPopStyle();
 
 		sensingAreaManager.drawSensingArea();
@@ -346,10 +358,9 @@ void ofApp::loadConfig() {
 	oscAddress = "localhost";
 	oscPort = 6000;
 
-
 	ofXml xml;
-	if (xml) {
-		xml.load("config.xml");
+    bool loaded = xml.load("config.xml");
+	if (loaded) {
 		auto configTag = xml.findFirst("config");
 		if (configTag) {
 			auto cameraTag = configTag.findFirst("camera");
